@@ -10,6 +10,7 @@ interface Props {
   name: string;
   label: string;
   type: string;
+  'data-testid': string;
 }
 
 const Input = (props: Props) => {
@@ -22,6 +23,7 @@ const Input = (props: Props) => {
         label={props.label}
         variant="outlined"
         type={props.type}
+        data-testid={props['data-testid']}
       />
     </>
   );

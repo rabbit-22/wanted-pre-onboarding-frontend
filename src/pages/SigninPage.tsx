@@ -8,13 +8,13 @@ import FormButton from '../components/FormButton';
 import Input from '../components/Input';
 
 /**
- * 회원가입 페이지
+ * 로그인 페이지
  */
 
-const SignupPage = () => {
+const SigninPage = () => {
   return (
     <CenterLayout>
-      <InputTitle title="회원가입" />
+      <InputTitle title="로그인" />
       <Division />
       <Input
         mb={3}
@@ -30,19 +30,12 @@ const SignupPage = () => {
         type="password"
         data-testid="password-input"
       />
-      <Input
-        mb={3}
-        name="confirmPwd"
-        label="Confirm Password "
-        type="password"
-        data-testid="password-input"
-      />
-      <FormButton data-testid="signup-button" title="Sign up" />
-      <Link to="/signin">
-        <OtherFormButton title="Sign in" />
+      <FormButton data-testid="signin-button" title="Sign in" />
+      <Link to="/signup">
+        <OtherFormButton title="Sign up" />
       </Link>
     </CenterLayout>
   );
 };
 
-export default SignupPage;
+export default SigninPage;
