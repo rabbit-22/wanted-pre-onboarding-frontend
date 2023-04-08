@@ -11,6 +11,7 @@ interface Props {
   label: string;
   type: string;
   'data-testid': string;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => any; //eslint-disable-line no-unused-vars
 }
 
 const Input = (props: Props) => {
@@ -24,6 +25,7 @@ const Input = (props: Props) => {
         variant="outlined"
         type={props.type}
         data-testid={props['data-testid']}
+        onChange={props.onChange}
       />
     </>
   );

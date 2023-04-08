@@ -8,6 +8,7 @@ import { Button } from '@mui/material';
 interface Props {
   title: string;
   'data-testid': string;
+  disabled: boolean;
 }
 
 const FormButton = (props: Props) => {
@@ -16,6 +17,8 @@ const FormButton = (props: Props) => {
       data-testid={props['data-testid']}
       sx={{ mt: 1, backgroundColor: '#575DFB', height: 50 }}
       variant="contained"
+      disabled={props.disabled}
+      type="submit"
     >
       {props.title}
     </Button>
