@@ -5,6 +5,7 @@ import useForm from '../../hooks/useForm';
 import validate from '../../hooks/validate';
 import ValidateBox from '../ValidateBox';
 import { useNavigate } from 'react-router-dom';
+import { login } from '../../api/login';
 
 /**
  * 로그인 폼
@@ -13,9 +14,10 @@ import { useNavigate } from 'react-router-dom';
 const SigninForm = () => {
   const navigate = useNavigate();
   const [isDisable, setIsDisable] = useState(false);
-  const { errors, handleChange, handleSubmit } = useForm({
+  const { values, errors, handleChange, handleSubmit } = useForm({
     initialValues: { email: '', password: '' },
     onSubmit: () => {
+      login(values);
       navigate('/todo');
     },
     validate: validate,

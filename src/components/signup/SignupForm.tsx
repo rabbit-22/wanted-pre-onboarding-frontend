@@ -5,6 +5,7 @@ import useForm from '../../hooks/useForm';
 import validate from '../../hooks/validate';
 import ValidateBox from '../ValidateBox';
 import { useNavigate } from 'react-router-dom';
+import { signup } from '../../api/login';
 
 /**
  * 회원가입 폼
@@ -13,9 +14,10 @@ import { useNavigate } from 'react-router-dom';
 const SignupForm = () => {
   const navigate = useNavigate();
   const [isDisable, setIsDisable] = useState(false);
-  const { errors, handleChange, handleSubmit } = useForm({
+  const { values, errors, handleChange, handleSubmit } = useForm({
     initialValues: { email: '', password: '' },
     onSubmit: () => {
+      signup(values);
       navigate('/signin');
     },
     validate: validate,
@@ -24,7 +26,6 @@ const SignupForm = () => {
     if (errors.email || errors.password) setIsDisable(true);
     else setIsDisable(false);
   }, [errors]);
-
   return (
     <form
       onSubmit={handleSubmit}
