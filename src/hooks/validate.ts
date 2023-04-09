@@ -1,10 +1,7 @@
-interface Props {
-  email?: string;
-  password?: string;
-}
+import { FormProps } from '../types/user';
 
-const validate = ({ email, password }: Props) => {
-  const errors: Props = {};
+const validate = ({ email, password }: FormProps) => {
+  const errors: FormProps = {};
   if (!email) {
     errors.email = '이메일을 입력해주세요';
   } else if (!email.includes('@')) {
