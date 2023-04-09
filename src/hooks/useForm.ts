@@ -7,7 +7,6 @@ interface Props {
 const useForm = ({ initialValues, onSubmit, validate }: any) => {
   const [values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState<Props>({});
-  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -15,24 +14,19 @@ const useForm = ({ initialValues, onSubmit, validate }: any) => {
   };
 
   const handleSubmit = (event: React.SyntheticEvent) => {
-    setIsLoading(true);
+    if (Object.keys(errors).length === 0) {
+      onSubmit(values);
+    }
     event.preventDefault();
-    setErrors(validate(values));
   };
 
   useEffect(() => {
-    if (isLoading) {
-      if (Object.keys(errors).length === 0) {
-        onSubmit(values);
-      }
-      setIsLoading(false);
-    }
-  }, [errors, isLoading]);
+    setErrors(validate(values));
+  }, [values]);
 
   return {
     values,
     errors,
-    isLoading,
     handleChange,
     handleSubmit,
   };

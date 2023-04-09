@@ -1,27 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Input from '../Input';
 import FormButton from '../FormButton';
 import useForm from '../../hooks/useForm';
 import validate from '../../hooks/validate';
 import ValidateBox from '../ValidateBox';
 import { useNavigate } from 'react-router-dom';
+
 /**
  * 회원가입 폼
  */
-interface Props {
-  email: string;
-  password: string;
-}
+
 const SignupForm = () => {
   const navigate = useNavigate();
-  const { errors, isLoading, handleChange, handleSubmit } = useForm({
+  const [isDisable, setIsDisable] = useState(false);
+  const { errors, handleChange, handleSubmit } = useForm({
     initialValues: { email: '', password: '' },
-    onSubmit: (values: Props) => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: () => {
       navigate('/signin');
     },
     validate: validate,
   });
+  useEffect(() => {
+    if (errors.email || errors.password) setIsDisable(true);
+    else setIsDisable(false);
+  }, [errors]);
+
   return (
     <form
       onSubmit={handleSubmit}
@@ -51,7 +54,7 @@ const SignupForm = () => {
       <FormButton
         data-testid="signup-button"
         title="Sign up"
-        disabled={isLoading}
+        disabled={isDisable}
       />
     </form>
   );

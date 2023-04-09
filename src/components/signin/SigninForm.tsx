@@ -1,23 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Input from '../Input';
 import FormButton from '../FormButton';
 import useForm from '../../hooks/useForm';
 import validate from '../../hooks/validate';
 import ValidateBox from '../ValidateBox';
 import { useNavigate } from 'react-router-dom';
+
 /**
  * 로그인 폼
  */
 
 const SigninForm = () => {
   const navigate = useNavigate();
-  const { errors, isLoading, handleChange, handleSubmit } = useForm({
+  const [isDisable, setIsDisable] = useState(false);
+  const { errors, handleChange, handleSubmit } = useForm({
     initialValues: { email: '', password: '' },
     onSubmit: () => {
       navigate('/todo');
     },
     validate: validate,
   });
+
+  useEffect(() => {
+    if (errors.email || errors.password) setIsDisable(true);
+    else setIsDisable(false);
+  }, [errors]);
+
   return (
     <form
       onSubmit={handleSubmit}
@@ -47,7 +55,7 @@ const SigninForm = () => {
       <FormButton
         data-testid="signin-button"
         title="Sign in"
-        disabled={isLoading}
+        disabled={isDisable}
       />
     </form>
   );
