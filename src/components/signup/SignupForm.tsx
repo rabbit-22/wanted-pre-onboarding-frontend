@@ -6,6 +6,7 @@ import validate from '../../hooks/validate';
 import ValidateBox from '../ValidateBox';
 import { useNavigate } from 'react-router-dom';
 import { signup } from '../../api/login';
+import { isLoggedIn } from '../../utils/isLoggedIn';
 
 /**
  * 회원가입 폼
@@ -16,9 +17,11 @@ const SignupForm = () => {
   const [isDisable, setIsDisable] = useState(false);
   const { values, errors, handleChange, handleSubmit } = useForm({
     initialValues: { email: '', password: '' },
-    onSubmit: () => {
-      signup(values);
-      navigate('/signin');
+    onSubmit: async () => {
+      const res = await signup(values);
+      if (res === 'success') {
+        navigate('/signin');
+      }
     },
     validate: validate,
   });
@@ -26,6 +29,12 @@ const SignupForm = () => {
     if (errors.email || errors.password) setIsDisable(true);
     else setIsDisable(false);
   }, [errors]);
+
+  useEffect(() => {
+    if (isLoggedIn()) {
+      navigate('/todo');
+    }
+  }, []);
   return (
     <form
       onSubmit={handleSubmit}
