@@ -3,8 +3,13 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import SignupPage from './pages/SignupPage';
 import SigninPage from './pages/SigninPage';
 import TodoPage from './pages/TodoPage';
+import HomePage from './pages/HomePage';
 
 const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <HomePage />,
+  },
   {
     path: '/signup',
     element: <SignupPage />,
