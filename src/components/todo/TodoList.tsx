@@ -2,9 +2,14 @@ import React from 'react';
 import { TodoProps } from '../../types/todo';
 import TodoItem from './TodoItem';
 
+/**
+ * Todo 목록
+ */
+
 interface Props {
   todoData: TodoProps[];
 }
+
 const TodoList = ({ todoData }: Props) => {
   return (
     <ul style={{ paddingLeft: 0 }}>

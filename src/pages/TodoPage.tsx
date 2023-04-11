@@ -7,6 +7,10 @@ import useGetTodo from '../hooks/useGetTodo';
 import { TodoContextProps } from '../types/todo';
 import TodoInput from '../components/todo/TodoInput';
 
+/**
+ * Todo 페이지
+ */
+
 export const TodoContext = createContext<TodoContextProps>({
   todos: [],
   getTodos: () => {},

@@ -3,6 +3,10 @@ import React, { useContext, useState } from 'react';
 import { TodoContext } from '../../pages/TodoPage';
 import { createTodo } from '../../api/todo';
 
+/**
+ * Todo 입력창
+ */
+
 const TodoInput = () => {
   const [value, setValue] = useState('');
   const { getTodos } = useContext(TodoContext);

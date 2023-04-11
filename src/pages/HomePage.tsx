@@ -2,6 +2,10 @@ import { Button } from '@mui/material';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+/**
+ * 메인 페이지
+ */
+
 const HomePage = () => {
   const handleClick = () => {
     localStorage.removeItem('accessToken');

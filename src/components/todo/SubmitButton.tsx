@@ -3,6 +3,9 @@ import { TodoProps } from '../../types/todo';
 import { TodoContext } from '../../pages/TodoPage';
 import { updateTodo } from '../../api/todo';
 
+/**
+ *  TodoList 수정 버튼 클릭 시 활성화되는 제출 버튼
+ */
 const SubmitButton = ({
   todo,
   setIsModify,
@@ -32,5 +35,3 @@ const SubmitButton = ({
 };
 
 export default SubmitButton;
-
-//todo: string,isCompleted: boolean,id: number,
