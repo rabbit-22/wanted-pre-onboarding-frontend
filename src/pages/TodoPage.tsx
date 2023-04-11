@@ -1,26 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, createContext } from 'react';
 import { isLoggedIn } from '../utils/isLoggedIn';
 import { useNavigate } from 'react-router-dom';
 import { Box } from '@mui/material';
-import { createTodo } from '../api/todo';
 import TodoList from '../components/todo/TodoList';
 import useGetTodo from '../hooks/useGetTodo';
+import { TodoContextProps } from '../types/todo';
+import TodoInput from '../components/todo/TodoInput';
+
+export const TodoContext = createContext<TodoContextProps>({
+  todos: [],
+  getTodos: () => {},
+});
 
 const TodoPage = () => {
   const navigate = useNavigate();
-  const [value, setValue] = useState('');
   const [todos, getTodos] = useGetTodo();
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value);
-  };
-
-  const handleClick = async () => {
-    if (value === '') return;
-    await createTodo(value);
-    getTodos();
-    setValue('');
-  };
 
   useEffect(() => {
     if (!isLoggedIn()) {
@@ -38,13 +32,10 @@ const TodoPage = () => {
         flexDirection: 'column',
       }}
     >
-      <Box>
-        <input data-testid="new-todo-input" onChange={handleChange} />
-        <button data-testid="new-todo-add-button" onClick={handleClick}>
-          추가
-        </button>
-      </Box>
-      <TodoList todoData={todos} />
+      <TodoContext.Provider value={{ todos: todos, getTodos: getTodos }}>
+        <TodoInput />
+        <TodoList todoData={todos} />
+      </TodoContext.Provider>
     </Box>
   );
 };

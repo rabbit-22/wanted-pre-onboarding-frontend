@@ -4,3 +4,7 @@ export interface TodoProps {
   isCompleted: boolean;
   userId: number;
 }
+export interface TodoContextProps {
+  todos: TodoProps[];
+  getTodos: () => Promise<void> | void;
+}
