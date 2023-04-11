@@ -1,46 +1,96 @@
-# Getting Started with Create React App
+# 📘 Todo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- 로그인 및 회원가입을 통해 유저의 Todo List를 제공하는 사이트
+- Todo CRUD 기능 제공
 
-## Available Scripts
+**배포 사이트: https://jimi-todo.vercel.app/**
 
-In the project directory, you can run:
+<br/>
 
-### `npm start`
+# 📹 Demo
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### 1. 로그인 및 회원가입
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<img width="600" alt="user" src="https://user-images.githubusercontent.com/77673029/231063576-43588139-dff1-40d1-a406-696b537f0ff4.gif">
 
-### `npm test`
+<br/>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### TODO
 
-### `npm run build`
+<img width="300" alt="todo" src="https://user-images.githubusercontent.com/77673029/231063852-76f99808-9980-4e79-b70c-f0da0f47ab7a.gif">
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<br/>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# 💡 2. 기술스택
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<p align="center">
+<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black"> <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white"> <img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white"> <img src="https://img.shields.io/badge/mui-007FFF?style=for-the-badge&logo=mui&logoColor=white">
+</p>
 
-### `npm run eject`
+<br/>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+# 📗 API
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+https://github.com/walking-sunset/selection-task#api
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<br/>
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+# 📂 폴더 구조
 
-## Learn More
+<details>
+<summary>자세히 보기</summary>
+<div>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+📦src
+ ┣ 📂api
+ ┃ ┣ 📜authAxios.ts
+ ┃ ┣ 📜constant.ts
+ ┃ ┣ 📜login.ts
+ ┃ ┗ 📜todo.ts
+ ┣ 📂components
+ ┃ ┣ 📂signin
+ ┃ ┃ ┗ 📜SigninForm.tsx
+ ┃ ┣ 📂signup
+ ┃ ┃ ┗ 📜SignupForm.tsx
+ ┃ ┣ 📂todo
+ ┃ ┃ ┣ 📜DeleteButton.tsx
+ ┃ ┃ ┣ 📜SubmitButton.tsx
+ ┃ ┃ ┣ 📜TodoInput.tsx
+ ┃ ┃ ┣ 📜TodoItem.tsx
+ ┃ ┃ ┗ 📜TodoList.tsx
+ ┃ ┣ 📜CenterLayout.tsx
+ ┃ ┣ 📜Division.tsx
+ ┃ ┣ 📜FormButton.tsx
+ ┃ ┣ 📜Input.tsx
+ ┃ ┣ 📜InputTitle.tsx
+ ┃ ┣ 📜OtherFormButton.tsx
+ ┃ ┗ 📜ValidateBox.tsx
+ ┣ 📂hooks
+ ┃ ┣ 📜useForm.ts
+ ┃ ┣ 📜useGetTodo.ts
+ ┃ ┗ 📜validate.ts
+ ┣ 📂pages
+ ┃ ┣ 📜HomePage.tsx
+ ┃ ┣ 📜SigninPage.tsx
+ ┃ ┣ 📜SignupPage.tsx
+ ┃ ┗ 📜TodoPage.tsx
+ ┣ 📂types
+ ┃ ┣ 📜todo.ts
+ ┃ ┗ 📜user.ts
+ ┣ 📂utils
+ ┃ ┣ 📜isLoggedIn.ts
+ ┃ ┗ 📜saveTokenToLocalStorage.ts
+ ┣ 📜App.css
+ ┣ 📜App.test.tsx
+ ┣ 📜App.tsx
+ ┣ 📜index.css
+ ┣ 📜index.tsx
+ ┣ 📜logo.svg
+ ┣ 📜react-app-env.d.ts
+ ┣ 📜reportWebVitals.ts
+ ┗ 📜setupTests.ts
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+</div>
+</details>
