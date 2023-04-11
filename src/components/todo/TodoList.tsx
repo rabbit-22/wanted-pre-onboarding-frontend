@@ -1,22 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { TodoProps } from '../../types/todo';
 import TodoItem from './TodoItem';
+import { TodoContext } from '../../pages/TodoPage';
 
 /**
  * Todo 목록
  */
 
-interface Props {
-  todoData: TodoProps[];
-}
-
-const TodoList = ({ todoData }: Props) => {
+const TodoList = () => {
+  const { todos } = useContext(TodoContext);
   return (
     <ul style={{ paddingLeft: 0 }}>
-      {todoData &&
-        todoData.map((todo: TodoProps) => (
-          <TodoItem key={todo.id} todo={todo} />
-        ))}
+      {todos &&
+        todos.map((todo: TodoProps) => <TodoItem key={todo.id} todo={todo} />)}
     </ul>
   );
 };

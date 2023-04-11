@@ -38,7 +38,7 @@ const TodoPage = () => {
     >
       <TodoContext.Provider value={{ todos: todos, getTodos: getTodos }}>
         <TodoInput />
-        <TodoList todoData={todos} />
+        <TodoList />
       </TodoContext.Provider>
     </Box>
   );
