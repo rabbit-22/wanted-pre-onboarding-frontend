@@ -24,7 +24,7 @@ export const signup = async (args: FormProps): Promise<LoginResult> => {
       return 'success';
     }
   } catch (e: any) {
-    alert('다시 시도해주세요');
+    alert('이미 가입된 이메일입니다.');
   }
   return 'fail';
 };
@@ -49,9 +49,7 @@ export const login = async (args: FormProps): Promise<LoginResultWithToken> => {
       };
     }
   } catch (e: any) {
-    if (e.response.status === 401) {
-      alert('비밀번호를 다시 입력해주세요');
-    }
+    alert('이메일 또는 비밀번호가 일치하지 않습니다.');
   }
   return {
     result: 'fail',
