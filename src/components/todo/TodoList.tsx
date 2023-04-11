@@ -21,4 +21,4 @@ const TodoList = ({ todoData }: Props) => {
   );
 };
 
-export default React.memo(TodoList);
+export default TodoList;

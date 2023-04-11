@@ -17,13 +17,14 @@ const TodoItem = ({ todo }: { todo: TodoProps }) => {
     setValue(event.target.value);
   };
 
-  const handleCheck = useCallback(() => {
-    updateTodo(todo.todo, !isChecked, todo.id);
+  const handleCheck = useCallback(async () => {
+    await updateTodo(todo.todo, !isChecked, todo.id);
     setIsChecked((prev) => !prev);
   }, [isChecked]);
 
   const handleModify = () => {
     setIsModify((prev) => !prev);
+    setValue('');
   };
   return (
     <li style={{ listStyle: 'none', marginBottom: 5 }}>

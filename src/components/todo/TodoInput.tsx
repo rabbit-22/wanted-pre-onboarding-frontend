@@ -26,7 +26,11 @@ const TodoInput = () => {
 
   return (
     <Box>
-      <input data-testid="new-todo-input" onChange={handleChange} />
+      <input
+        data-testid="new-todo-input"
+        onChange={handleChange}
+        value={value}
+      />
       <button
         data-testid="new-todo-add-button"
         onClick={() => handleClick(value)}
