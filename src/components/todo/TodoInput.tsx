@@ -1,5 +1,5 @@
 import { Box } from '@mui/material';
-import React, { useContext, useState } from 'react';
+import React, { useCallback, useContext, useState } from 'react';
 import { TodoContext } from '../../pages/TodoPage';
 import { createTodo } from '../../api/todo';
 
@@ -14,21 +14,27 @@ const TodoInput = () => {
     setValue(event.target.value);
   };
 
-  const handleClick = async () => {
-    if (value === '') return;
-    await createTodo(value);
-    getTodos();
-    setValue('');
-  };
+  const handleClick = useCallback(
+    async (todo: string) => {
+      if (todo === '') return;
+      await createTodo(todo);
+      getTodos();
+      setValue('');
+    },
+    [getTodos],
+  );
 
   return (
     <Box>
       <input data-testid="new-todo-input" onChange={handleChange} />
-      <button data-testid="new-todo-add-button" onClick={handleClick}>
+      <button
+        data-testid="new-todo-add-button"
+        onClick={() => handleClick(value)}
+      >
         추가
       </button>
     </Box>
   );
 };
 
-export default TodoInput;
+export default React.memo(TodoInput);

@@ -18,8 +18,10 @@ const SubmitButton = ({
   const { getTodos } = useContext(TodoContext);
 
   const handleClick = async () => {
-    await updateTodo(value, todo.isCompleted, todo.id);
-    getTodos();
+    if (value !== '') {
+      await updateTodo(value, todo.isCompleted, todo.id);
+      getTodos();
+    }
     setIsModify(false);
   };
 

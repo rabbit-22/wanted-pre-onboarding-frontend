@@ -40,6 +40,7 @@ const TodoItem = ({ todo }: { todo: TodoProps }) => {
             style={{ marginRight: 3 }}
             data-testid="modify-input"
             onChange={handleChange}
+            defaultValue={todo.todo}
           />
           <SubmitButton todo={todo} setIsModify={setIsModify} value={value} />
           <button data-testid="cancel-button" onClick={handleModify}>

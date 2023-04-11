@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useCallback, useContext } from 'react';
 import { deleteTodo } from '../../api/todo';
 import { TodoContext } from '../../pages/TodoPage';
 
@@ -8,13 +8,16 @@ import { TodoContext } from '../../pages/TodoPage';
 
 const DeleteButton = ({ id }: { id: number }) => {
   const { getTodos } = useContext(TodoContext);
-  const handleClick = async () => {
-    await deleteTodo(id);
-    getTodos();
-  };
+  const handleClick = useCallback(
+    async (todoid: number) => {
+      await deleteTodo(todoid);
+      getTodos();
+    },
+    [getTodos],
+  );
 
   return (
-    <button onClick={handleClick} data-testid="delete-button">
+    <button onClick={() => handleClick(id)} data-testid="delete-button">
       삭제
     </button>
   );
