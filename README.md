@@ -7,6 +7,17 @@
 
 <br/>
 
+# 🚀 프로젝트 실행 방법
+
+```
+git clone https://github.com/rabbit-22/wanted-pre-onboarding-frontend.git
+
+npm install
+npm start
+```
+
+<br/>
+
 # 📹 Demo
 
 ### 1. 로그인 및 회원가입
